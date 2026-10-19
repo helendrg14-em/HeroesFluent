@@ -1,0 +1,24 @@
+@model HeroesFluent.Models.Equipo
+
+@{
+    ViewData["Title"] = "Eliminar equipo";
+}
+
+<div class="form-page">
+    <h1>Eliminar equipo</h1>
+    <p class="text-danger">¿Seguro que quieres eliminar este equipo? Sus héroes conservarán sus registros y quedarán sin equipo.</p>
+    <hr />
+    <dl class="row details-list">
+        <dt class="col-sm-4">Nombre</dt>
+        <dd class="col-sm-8">@Model.Nombre</dd>
+        <dt class="col-sm-4">Fecha y hora de fundación</dt>
+        <dd class="col-sm-8">@Model.FechaFundacion.ToString("g")</dd>
+        <dt class="col-sm-4">Presupuesto</dt>
+        <dd class="col-sm-8">@Model.Presupuesto.ToString("N2")</dd>
+    </dl>
+    <form asp-action="Delete" class="form-actions">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+</div>

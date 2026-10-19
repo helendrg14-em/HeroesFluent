@@ -1,0 +1,54 @@
+@model HeroesFluent.Models.Heroe
+
+@{
+    ViewData["Title"] = "Crear héroe";
+}
+
+<div class="form-page">
+    <h1>Crear héroe</h1>
+    <hr />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="Nombre" class="form-label">Nombre</label>
+            <input asp-for="Nombre" class="form-control" />
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Alias" class="form-label">Alias</label>
+            <input asp-for="Alias" class="form-control" />
+            <span asp-validation-for="Alias" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="NivelPoder" class="form-label">Nivel de poder</label>
+            <input asp-for="NivelPoder" type="number" class="form-control" min="1" max="100" />
+            <span asp-validation-for="NivelPoder" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="FechaRegistro" class="form-label">Fecha y hora de registro</label>
+            <input asp-for="FechaRegistro" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" class="form-control" />
+            <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="EquipoId" class="form-label">Equipo</label>
+            <select asp-for="EquipoId" class="form-select" asp-items="ViewBag.EquipoId">
+                <option value="">Sin equipo</option>
+            </select>
+            <span asp-validation-for="EquipoId" class="text-danger"></span>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Volver a héroes</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

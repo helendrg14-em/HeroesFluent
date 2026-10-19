@@ -1,0 +1,26 @@
+@model HeroesFluent.Models.Heroe
+
+@{
+    ViewData["Title"] = "Detalles del héroe";
+}
+
+<div class="form-page">
+    <h1>Detalles del héroe</h1>
+    <hr />
+    <dl class="row details-list">
+        <dt class="col-sm-4">Nombre</dt>
+        <dd class="col-sm-8">@Model.Nombre</dd>
+        <dt class="col-sm-4">Alias</dt>
+        <dd class="col-sm-8">@Model.Alias</dd>
+        <dt class="col-sm-4">Nivel de poder</dt>
+        <dd class="col-sm-8">@Model.NivelPoder</dd>
+        <dt class="col-sm-4">Fecha y hora de registro</dt>
+        <dd class="col-sm-8">@Model.FechaRegistro.ToString("g")</dd>
+        <dt class="col-sm-4">Equipo</dt>
+        <dd class="col-sm-8">@(Model.Equipo?.Nombre ?? "Sin equipo")</dd>
+    </dl>
+    <div class="form-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Volver a héroes</a>
+    </div>
+</div>

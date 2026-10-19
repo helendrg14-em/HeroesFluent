@@ -1,0 +1,42 @@
+@model IEnumerable<HeroesFluent.Models.Heroe>
+
+@{
+    ViewData["Title"] = "Héroes";
+}
+
+<div class="page-heading">
+    <h1>Héroes</h1>
+    <a asp-action="Create" class="btn btn-primary">Crear héroe</a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Alias</th>
+                <th>Nivel de poder</th>
+                <th>Fecha y hora de registro</th>
+                <th>Equipo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var heroe in Model)
+            {
+                <tr>
+                    <td>@heroe.Nombre</td>
+                    <td>@heroe.Alias</td>
+                    <td>@heroe.NivelPoder</td>
+                    <td>@heroe.FechaRegistro.ToString("g")</td>
+                    <td>@(heroe.Equipo?.Nombre ?? "Sin equipo")</td>
+                    <td class="table-actions">
+                        <a asp-action="Edit" asp-route-id="@heroe.Id">Editar</a>
+                        <a asp-action="Details" asp-route-id="@heroe.Id">Detalles</a>
+                        <a asp-action="Delete" asp-route-id="@heroe.Id">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

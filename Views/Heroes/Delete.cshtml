@@ -1,0 +1,28 @@
+@model HeroesFluent.Models.Heroe
+
+@{
+    ViewData["Title"] = "Eliminar héroe";
+}
+
+<div class="form-page">
+    <h1>Eliminar héroe</h1>
+    <p class="text-danger">¿Seguro que quieres eliminar este héroe?</p>
+    <hr />
+    <dl class="row details-list">
+        <dt class="col-sm-4">Nombre</dt>
+        <dd class="col-sm-8">@Model.Nombre</dd>
+        <dt class="col-sm-4">Alias</dt>
+        <dd class="col-sm-8">@Model.Alias</dd>
+        <dt class="col-sm-4">Nivel de poder</dt>
+        <dd class="col-sm-8">@Model.NivelPoder</dd>
+        <dt class="col-sm-4">Fecha y hora de registro</dt>
+        <dd class="col-sm-8">@Model.FechaRegistro.ToString("g")</dd>
+        <dt class="col-sm-4">Equipo</dt>
+        <dd class="col-sm-8">@(Model.Equipo?.Nombre ?? "Sin equipo")</dd>
+    </dl>
+    <form asp-action="Delete" class="form-actions">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+    </form>
+</div>

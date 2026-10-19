@@ -1,0 +1,22 @@
+@model HeroesFluent.Models.Equipo
+
+@{
+    ViewData["Title"] = "Detalles del equipo";
+}
+
+<div class="form-page">
+    <h1>Detalles del equipo</h1>
+    <hr />
+    <dl class="row details-list">
+        <dt class="col-sm-4">Nombre</dt>
+        <dd class="col-sm-8">@Model.Nombre</dd>
+        <dt class="col-sm-4">Fecha y hora de fundación</dt>
+        <dd class="col-sm-8">@Model.FechaFundacion.ToString("g")</dd>
+        <dt class="col-sm-4">Presupuesto</dt>
+        <dd class="col-sm-8">@Model.Presupuesto.ToString("N2")</dd>
+    </dl>
+    <div class="form-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Volver a equipos</a>
+    </div>
+</div>
